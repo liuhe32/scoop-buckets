@@ -1,0 +1,28 @@
+{
+    "version": "6u45",
+    "description": "Oracle JDK 6 Update 45",
+    "homepage": "https://www.oracle.com/java/technologies/javase-java-archive-javase6-downloads.html",
+    "license": "https://www.oracle.com/downloads/licenses/javase-license.html",
+    "architecture": {
+        "64bit": {
+            "url": "https://repo.huaweicloud.com/java/jdk/6u45-b06/jdk-6u45-windows-x64.exe",
+            "hash": "345059D5BC64275C1D8FDC03625D69C16D0C8730BE1C152247F5F96D00B21B00"
+        },
+        "32bit": {
+            "url": "https://repo.huaweicloud.com/java/jdk/6u45-b06/jdk-6u45-windows-i586.exe",
+            "hash": "345059D5BC64275C1D8FDC03625D69C16D0C8730BE1C152247F5F96D00B21B00not know"
+        }
+    },
+    "installer": {
+        "script": [
+            "# 静默安装到指定目录",
+            "Start-Process -Wait -FilePath \"$dir\\jdk-6u45-windows-x64.exe\" -ArgumentList '/s', \"INSTALLDIR=$dir\\jdk\"",
+            "# 等待安装完成",
+            "while (!(Test-Path \"$dir\\jdk\\bin\\java.exe\")) { Start-Sleep -Seconds 2 }"
+        ]
+    },
+    "env_add_path": "jdk\\bin",
+    "env_set": {
+        "JAVA_HOME": "$dir\\jdk"
+    }
+}
